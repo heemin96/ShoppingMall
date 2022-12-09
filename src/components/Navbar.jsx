@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingBag } from "react-icons/fi";
 import { BsFillPencilFill } from "react-icons/bs";
 import styled from "styled-components";
-import { login } from "../api/firebase";
+import { login, logout, onUserStateChange } from "../api/firebase";
+import User from "./User";
+import Button from "./ui/Button";
+import { useAuthContext } from "./context/AuthContext";
 
 export default function Navbar() {
+  const { user, login, logout } = useAuthContext();
+
   return (
     <N.Header>
       <N.LogoLink to="/">
@@ -15,10 +20,16 @@ export default function Navbar() {
       <N.Nav>
         <Link to="/products">Products</Link>
         <Link to="/carts">Carts</Link>
-        <Link to="/products/new">
-          <BsFillPencilFill />
-        </Link>
-        <button onClick={() => login()}>Login</button>
+
+        {user && user.isAdmin && (
+          <Link to="/products/new">
+            <BsFillPencilFill />
+          </Link>
+        )}
+
+        {user && <User user={user} />}
+        {!user && <Button text={"Login"} onClick={login} />}
+        {user && <Button text={"Logout"} onClick={logout} />}
       </N.Nav>
     </N.Header>
   );
