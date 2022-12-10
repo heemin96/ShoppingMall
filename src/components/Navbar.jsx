@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingBag } from "react-icons/fi";
 import { BsFillPencilFill } from "react-icons/bs";
 import styled from "styled-components";
-import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
 import Button from "./ui/Button";
-import { useAuthContext } from "./context/AuthContext";
+import { useAuthContext } from "../context/AuthContext";
+import CartStatus from "./ui/CartStatus";
 
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -14,12 +14,14 @@ export default function Navbar() {
   return (
     <N.Header>
       <N.LogoLink to="/">
-        <FiShoppingBag />
-        <h1>Shoppy</h1>
+        {/* <FiShoppingBag /> */}
+        <h1> A.S.P </h1>
       </N.LogoLink>
       <N.Nav>
         <Link to="/products">Products</Link>
-        <Link to="/carts">Carts</Link>
+        <Link to="/carts">
+          <CartStatus />
+        </Link>
 
         {user && user.isAdmin && (
           <Link to="/products/new">
@@ -40,16 +42,16 @@ const N = {
   Header: styled.header`
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid gray;
     padding: 0.5rem;
   `,
 
   LogoLink: styled(Link)`
     display: flex;
     align-items: center;
-    color: #f96162;
+    color: gray;
     font-size: 2.25rem;
     line-height: 2.5rem;
+    font-family: cursive;
   `,
 
   Nav: styled.nav`
