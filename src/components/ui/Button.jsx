@@ -10,7 +10,7 @@ function Button({ text, onClick, width, color }) {
 }
 
 const AppButton = styled.button`
-  background-color: gray;
+  background-color: black;
   padding: 0.5rem 1rem;
   color: white;
   border-radius: 0.5rem;
