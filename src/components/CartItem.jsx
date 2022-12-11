@@ -22,14 +22,26 @@ function CartItem({
   return (
     <Li>
       <Img src={image} alt={title}></Img>
-      <Title>{title}</Title>
-      <Option>{option}</Option>
-      <div>
-        <Minus onClick={handleMinus} />
-        <span>{quantity}</span>
-        <Plus onClick={handlePlus} />
-        <Delete onclick={handleDelete} />
-      </div>
+      {/* 전체 컨테이너 */}
+      <CartItemDetailContainer>
+        {/*  */}
+
+        {/* 디테일 정보 */}
+        <CartItemDetail>
+          <Title>{title}</Title>
+          <Option>{option}</Option>
+          <Price>{price}</Price>
+        </CartItemDetail>
+        {/*  */}
+
+        {/* 계산 */}
+        <CartItemCalCulateConatiner>
+          <Minus onClick={handleMinus} />
+          <span>{quantity}</span>
+          <Plus onClick={handlePlus} />
+          <Delete onclick={handleDelete} />
+        </CartItemCalCulateConatiner>
+      </CartItemDetailContainer>
     </Li>
   );
 }
@@ -44,14 +56,37 @@ const Li = styled.li`
 const Img = styled.img`
   width: 12rem;
   border-radius: 0.5rem;
-  @media (man-width: 768px) {
+  @media (max-width: 768px) {
     width: 6rem;
   }
 `;
 
-const Title = styled.p``;
+const CartItemDetailContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 0%;
+  margin-left: 1rem;
+`;
 
-const Option = styled.p``;
+const CartItemDetail = styled.div`
+  flex-basis: 60%;
+`;
+
+const Title = styled.p`
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+`;
+
+const Option = styled.p`
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: black; ;
+`;
+
+const Price = styled.p``;
+
+const CartItemCalCulateConatiner = styled.div``;
 
 const Minus = styled(AiOutlineMinusSquare)``;
 
