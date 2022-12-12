@@ -1,23 +1,28 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { useAuthContext } from "../context/AuthContext";
 import Button from "../components/ui/Button";
-import { addOrUpdateToCart } from "../api/firebase";
+
+import useCart from "../hooks/useCart";
 
 function ProductDetail() {
-  const { uid } = useAuthContext();
+  const { addOrUpdateItem } = useCart();
   const {
     state: {
       product: { id, image, title, description, category, price, options },
     },
   } = useLocation();
+  const [success, setSuccess] = useState();
   const [selected, setSelected] = useState(options && options[0]); //옵션이 있다면 옵션에서 첫번째 아이템을 클릭하도록
-
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = (e) => {
     const product = { id, image, title, price, option: selected, quantity: 1 };
-    addOrUpdateToCart(uid, product);
+    addOrUpdateItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess("장바구니에 추가되었습니다");
+        setTimeout(() => setSuccess(null), 3000);
+      },
+    });
   };
   return (
     <>
@@ -38,9 +43,10 @@ function ProductDetail() {
                 ))}
             </D.Select>
           </D.OptionsFlexContainer>
+          {success && <D.Success>{success}</D.Success>}
           <Button
+            text="장바구니에 추가하기"
             width="100%"
-            text="장바구니에 추가"
             onClick={handleClick}
           ></Button>
         </D.Article>
@@ -108,6 +114,13 @@ const D = {
     flex: 1 1 0%;
     border: 2px dashed black;
     outline: none;
+  `,
+
+  Success: styled.p`
+    font-weight: 700;
+    margin: 0.5rem 0;
+    text-align: center;
+    color: red;
   `,
 };
 

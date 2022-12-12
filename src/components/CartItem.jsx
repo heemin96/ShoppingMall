@@ -1,28 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import useCart from "../hooks/useCart";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
-import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
+import { CALCULATE_ICON } from "./ui/IconStyle";
 
 function CartItem({
   product,
   product: { id, image, title, option, quantity, price },
-  uid,
 }) {
+  const { addOrUpdateItem, removeItem } = useCart();
+
   const handleMinus = () => {
     if (quantity < 2) return;
-    addOrUpdateToCart(uid, { ...product, quantity: quantity - 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity - 1 });
   };
   const handlePlus = () => {
-    addOrUpdateToCart(uid, { ...product, quantity: quantity + 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: quantity + 1 });
   };
   const handleDelete = () => {
-    removeFromCart(uid, id);
+    removeItem.mutate(id);
   };
   return (
     <Li>
       <Img src={image} alt={title}></Img>
-      {/* 전체 컨테이너 */}
+      {/* 디테일전체 컨테이너 */}
       <CartItemDetailContainer>
         {/*  */}
 
@@ -35,12 +37,12 @@ function CartItem({
         {/*  */}
 
         {/* 계산 */}
-        <CartItemCalCulateConatiner>
+        <CartItemCalCulate>
           <Minus onClick={handleMinus} />
           <span>{quantity}</span>
           <Plus onClick={handlePlus} />
-          <Delete onclick={handleDelete} />
-        </CartItemCalCulateConatiner>
+          <Delete onClick={handleDelete} />
+        </CartItemCalCulate>
       </CartItemDetailContainer>
     </Li>
   );
@@ -75,6 +77,10 @@ const CartItemDetail = styled.div`
 const Title = styled.p`
   font-size: 1.125rem;
   line-height: 1.75rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 `;
 
 const Option = styled.p`
@@ -86,12 +92,23 @@ const Option = styled.p`
 
 const Price = styled.p``;
 
-const CartItemCalCulateConatiner = styled.div``;
+const CartItemCalCulate = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+`;
 
-const Minus = styled(AiOutlineMinusSquare)``;
+const Minus = styled(AiOutlineMinusSquare)`
+  ${CALCULATE_ICON}
+`;
 
-const Plus = styled(AiOutlinePlusSquare)``;
+const Plus = styled(AiOutlinePlusSquare)`
+  ${CALCULATE_ICON}
+`;
 
-const Delete = styled(RiDeleteBin5Fill)``;
+const Delete = styled(RiDeleteBin5Fill)`
+  ${CALCULATE_ICON}
+`;
 
 export default CartItem;
