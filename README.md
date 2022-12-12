@@ -56,7 +56,6 @@
 
 ### 기능 2
 - React Query를 통해 데이터 관리하기
-- React Axios 를 통해 데이터 통신하기
 
 ### 기능 3
 - Cloudnary이용해 이미지 업로드하기
