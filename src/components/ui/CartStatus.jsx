@@ -33,6 +33,9 @@ const ProductsLength = styled.p`
   background-color: black;
   border-radius: 100%;
   text-align: center;
+  position: absolute;
+  top: -0.1rem;
+  right: -0.2rem;
 `;
 
 export default CartStatus;
