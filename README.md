@@ -35,9 +35,9 @@
 
 ## 기술 스택
 
-| JavaScript |  React   |  Node   |  Reac Query  |  Firebase  |  Cloudinary  | 
-| :--------: | :------: | :-----: |  :---------: |  :------:  |  :--------:  |
-|   <img src="https://user-images.githubusercontent.com/101728625/205824814-ff390f33-e823-42f6-850d-eb906733f377.png">   | <img src="https://user-images.githubusercontent.com/101728625/205825066-16686d43-2f6b-4e8c-bd23-60afe900cd87.png"> | <img src="https://user-images.githubusercontent.com/101728625/205825143-b99d9b06-7ad1-4c37-879e-f51e3d5317e4.png"> | <img src="https://user-images.githubusercontent.com/101728625/207009915-18fb7b0a-a90b-441a-ae2d-133b724c484f.png"  width="100"/>| <img src="https://user-images.githubusercontent.com/101728625/207011112-6d7b0234-ba77-4b8f-9597-286a6e5a4e80.png"  width='100px'/> | <img src="https://user-images.githubusercontent.com/101728625/207012209-c4bc68ca-2831-46a7-9a1d-8a99f462d452.png" width='100px' />
+| JavaScript |  React   |  Node   |  Firebase  |  Cloudinary  | 
+| :--------: | :------: | :-----: |  :------:  |  :--------:  |
+|   <img src="https://user-images.githubusercontent.com/101728625/205824814-ff390f33-e823-42f6-850d-eb906733f377.png">   | <img src="https://user-images.githubusercontent.com/101728625/205825066-16686d43-2f6b-4e8c-bd23-60afe900cd87.png"> | <img src="https://user-images.githubusercontent.com/101728625/205825143-b99d9b06-7ad1-4c37-879e-f51e3d5317e4.png"> |  <img src="https://user-images.githubusercontent.com/101728625/207011112-6d7b0234-ba77-4b8f-9597-286a6e5a4e80.png"  width='100px'/> | <img src="https://user-images.githubusercontent.com/101728625/207012209-c4bc68ca-2831-46a7-9a1d-8a99f462d452.png" width='100px' />
 
 
 
